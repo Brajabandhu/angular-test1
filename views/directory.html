@@ -1,5 +1,6 @@
 <html>
 <body>
+  <div class="content">
 <!-- ng-controller directive -->
   <!--or  -->
   <!-- <ng-include src="'header.html'"></ng-include> -->
@@ -9,12 +10,12 @@
   <p>Above Entered data (text field):{{enter}}</p>
   <!-- ng-init directive -->
   <p ng-init="inializevar=['das','braja','bandhu']"></p>
-  <p>Value from array without ng-repeat:{{inializevar[2]}}</p>
-
+  <p>Value from array without ng-repeat is:</p>
+ <li>{{inializevar[2]}}</li>
   <!-- ng-repeat directive -->
   <p>Read data from array using ng-repeat:</p>
   <ul>
-    <li ng-repeat="loop in inializevar">{{loop}}
+    <li ng-repeat="loop in inializevar">{{loop}}</li>
   </ul>
   <!--Read the same array data from controller  -->
   <p> Read the same array data from controller:</p>
@@ -39,8 +40,9 @@
       <div class="remove" ng-click="removeEle(loop2)">x</div>
     </li>
   </ul>
+  
   <p> Add new records into an Array/List:</p>
-  <div>
+  
     <form ng-submit="addData()">
       <input type="text" placeholder="enter new name"   ng-model="name"><br/>
       <input type="text" placeholder="enter new age"    ng-model="age"><br/>
@@ -48,6 +50,7 @@
 
       <input type="submit" value="Click to Submit">
     </form>
+    </div>
 </body>
 </html>
  
