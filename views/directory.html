@@ -1,0 +1,53 @@
+<html>
+<body>
+<!-- ng-controller directive -->
+  <!--or  -->
+  <!-- <ng-include src="'header.html'"></ng-include> -->
+  <p>Data from controller:{{message}}</p>
+  <input type="text" ng-model="enter" placeholder="enter something">
+
+  <p>Above Entered data (text field):{{enter}}</p>
+  <!-- ng-init directive -->
+  <p ng-init="inializevar=['das','braja','bandhu']"></p>
+  <p>Value from array without ng-repeat:{{inializevar[2]}}</p>
+
+  <!-- ng-repeat directive -->
+  <p>Read data from array using ng-repeat:</p>
+  <ul>
+    <li ng-repeat="loop in inializevar">{{loop}}
+  </ul>
+  <!--Read the same array data from controller  -->
+  <p> Read the same array data from controller:</p>
+  <ul>
+    <li ng-repeat="loop1 in var">
+      {{loop1}}</li>
+  </ul>
+  <!--order by name and age using ng-click  -->
+  <p>Order by Name and Age: </p>
+  <button ng-click="btn='name'">Order By Name</button>
+  <button ng-click="btn='age'">Order By Age</button>
+  <!--Ordering data by filter  -->
+  <p>Ordered as per Entered value:</p>
+  <input type="text" ng-model="search" placeholder="sort by entered format">
+  <ul>
+    <!--ng-show and ng-hide directive ng-hide="loop2.available" or ng-show="!loop2.available" -->
+    <!--below is for ordered by name  -->
+    <!-- <li ng-repeat="loop2 in arr | orderBy:'name' | filter:search" ng-show="loop2.available"> -->
+    <li ng-repeat="loop2 in arr | orderBy:btn | filter:search" ng-show="loop2.available">
+      Name: {{loop2.name}}, Age: {{loop2.age}}, Salary:{{loop2.salary | currency:'Rs'}}
+      <!--Below function calling for remove an element  -->
+      <div class="remove" ng-click="removeEle(loop2)">x</div>
+    </li>
+  </ul>
+  <p> Add new records into an Array/List:</p>
+  <div>
+    <form ng-submit="addData()">
+      <input type="text" placeholder="enter new name"   ng-model="name"><br/>
+      <input type="text" placeholder="enter new age"    ng-model="age"><br/>
+      <input type="text" placeholder="enter new salary" ng-model="salary"><br/>
+
+      <input type="submit" value="Click to Submit">
+    </form>
+</body>
+</html>
+ 

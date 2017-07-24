@@ -1,0 +1,22 @@
+<!DOCTYPE html >
+<!--ng-app directive  -->
+<html lang="en" ng-app="mymodule">
+
+<head>
+  <title>Mr.Das Demo AngularJS Application</title>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script src="app/angular.min.js"></script>
+  <script src="app/angular-route.min.js"></script>
+  <script src="js/module.js"></script>
+   
+ 
+</head>
+<body>
+<!--ng-include directive  , which includes another page . Whole code after ng-include moved to directory.html for ngRoute usage-->
+<header ng-include="'header.html'"></header>
+<!-- defines this page is a main page and ng-view tells to show other pages by ngRoute -->
+<main ng-view></main>
+
+</body>
+
+</html>
