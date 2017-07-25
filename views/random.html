@@ -1,3 +1,10 @@
-<div style="text-align:centre"></div>
-<h1>{{title}}</h1>
-<img src="../image/Das.png"/>
+<div style="text-align: center">
+
+    <!--h4 makes the size small  -->
+    <h4>{{title}}</h4>
+    <img ng-src="image/Das.png" />
+    <!--below tag used where our view page(page declared in templateUrl in  directive declaration ), 
+        here used because this is our view page  and where the tag is declared message will display 
+        in the same place in view page-->
+    <div ng-transclude=""></div>
+</div>

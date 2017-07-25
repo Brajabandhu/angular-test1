@@ -5,17 +5,26 @@ mymodule.config(['$routeProvider', function ($routeProvider) {
         .when('/directory', { templateUrl: 'views/directory.html', controller: 'mycontroller' })
         .otherwise({ redirectTo: '/home' });
 }]);
-// for custom directive tag
-mymodule.directive('randomarr', [function () {
+// for custom directive tag (random-dir)--here directive name is without - and 2nd character start with capital ..see below
+mymodule.directive('randomDir', [function () {
     return {
+        // defines where to use the tag like as element(E),as Attribute(A) or both (EA)..etc
         restrict: 'E',
+        // defines what are the attributes in my custom tag.
         scope: {
             myarr: '=',
             title: '='
 
         },
+        // everything works fine but while inspecting ,my custome tag will replace with the outermost tag(div,section...etc whatever) defined in the redirect page/templateURL(random.html)
+        replace:true,
+        // transclude used to active/work inside inner tag of our custome tag
+        transclude:true,
+        // this defines where my view page
         //template    : '<img ng-srs="image/Das.png">',
-         templateUrl   : '../views/random.html',
+         templateUrl   : 'views/random.html',
+        //  use the controller as per the request or as per the page(which uses this custom tag)linked with controller. 
+        //does some $scope.messa...initialization or any operations
         controller: function ($scope) {
 
         }
