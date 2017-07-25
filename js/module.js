@@ -1,20 +1,40 @@
-var mymodule = angular.module("mymodule", ['ngRoute']);
+var mymodule = angular.module('mymodule', ['ngRoute']);
+
 mymodule.config(['$routeProvider', function ($routeProvider) {
-    $routeProvider.when('/home', { templateUrl: 'views/home.html' })
-                  .when('/directory', { templateUrl: 'views/directory.html', controller: 'mycontroller' })
-                  .otherwise({ redirectTo: '/home' });
+    $routeProvider.when('/home', { templateUrl: 'views/home.html',controller:'mycontroller'})
+        .when('/directory', { templateUrl: 'views/directory.html', controller: 'mycontroller' })
+        .otherwise({ redirectTo: '/home' });
 }]);
-var mycontroller = function ($scope,$http) {
+// for custom directive tag
+mymodule.directive('randomarr', [function () {
+    return {
+        restrict: 'E',
+        scope: {
+            myarr: '=',
+            title: '='
+
+        },
+        //template    : '<img ng-srs="image/Das.png">',
+         templateUrl   : '../views/random.html',
+        controller: function ($scope) {
+
+        }
+
+    };
+
+
+}]);
+var mycontroller = function ($scope, $http) {
     $scope.message = "This is my first Test";
     $scope.var = ['test1', 'test2', 'test3'];
     // The below array is replaced by the below $http.get method which read data from json file, instead here creating manually so manythings.
-    
+
     // $scope.arr = [
     //     { name: "das", age: "29", salary: 33333, available: true },
     //     { name: "bandhu", age: "25", salary: 29999, available: true },
     //     { name: "braja", age: "30", salary: 20000, available: true },
     //     { name: "pap", age: "27", salary: 19999, available: false }
-     
+
     // ]
 
 
@@ -41,8 +61,12 @@ var mycontroller = function ($scope,$http) {
 
 
     }
-$http.get('data/jsondata.json').success(function(data){
-    $scope.arr=data;
-});
+    // Reading data from json file
+    $http.get('data/jsondata.json').success(function (data) {
+        $scope.arr = data;
+    }
+    
+    );
 }
+// Registering controller into module
 mymodule.controller("mycontroller", mycontroller);
