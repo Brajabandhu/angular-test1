@@ -3,6 +3,7 @@ var mymodule = angular.module('mymodule', ['ngRoute']);
 mymodule.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/home', { templateUrl: 'views/home.html',controller:'mycontroller'})
         .when('/directory', { templateUrl: 'views/directory.html', controller: 'mycontroller' })
+        .when('/contact', { templateUrl: 'views/contact.html'})
         .otherwise({ redirectTo: '/home' });
 }]);
 // for custom directive tag (random-dir)--here directive name is without - and 2nd character start with capital ..see below
@@ -15,7 +16,7 @@ mymodule.directive('randomDir', [function () {
             myarr: '=',
             title: '='
 
-        },
+        },  
         // everything works fine but while inspecting ,my custome tag will replace with the outermost tag(div,section...etc whatever) defined in the redirect page/templateURL(random.html)
         replace:true,
         // transclude used to active/work inside inner tag of our custome tag

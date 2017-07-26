@@ -118,3 +118,10 @@ main{
   cursor: pointer;
   margin-left: 10px;
 }
+/*below both are for validation  */
+input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched{
+  border: 2px solid red;
+}
+input.ng-valid.ng-touched, textarea.ng-valid{
+  border: 2px solid green;
+}
