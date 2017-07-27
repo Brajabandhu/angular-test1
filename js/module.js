@@ -1,9 +1,13 @@
 var mymodule = angular.module('mymodule', ['ngRoute']);
 
-mymodule.config(['$routeProvider', function ($routeProvider) {
+mymodule.config(['$routeProvider','$locationProvider', function ($routeProvider,$locationProvider) {
+    // below line is for / without # in request path
+    $locationProvider.html5Mode(true);
+
     $routeProvider.when('/home', { templateUrl: 'views/home.html',controller:'mycontroller'})
         .when('/directory', { templateUrl: 'views/directory.html', controller: 'mycontroller' })
-        .when('/contact', { templateUrl: 'views/contact.html'})
+        .when('/contact-success', { templateUrl: 'views/contact-success.html', controller: 'contactcontroller' })
+        .when('/contact', { templateUrl: 'views/contact.html',controller:'contactcontroller'})
         .otherwise({ redirectTo: '/home' });
 }]);
 // for custom directive tag (random-dir)--here directive name is without - and 2nd character start with capital ..see below
@@ -78,5 +82,12 @@ var mycontroller = function ($scope, $http) {
     
     );
 }
+// location defines the path to which we want to send the request..
+var contactcontroller=function($scope,$location){
+    $scope.sendMessage=function(){
+        $location.path('/contact-success');
+    };
+}
 // Registering controller into module
 mymodule.controller("mycontroller", mycontroller);
+mymodule.controller("contactcontroller",contactcontroller);

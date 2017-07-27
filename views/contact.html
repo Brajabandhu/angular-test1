@@ -1,7 +1,7 @@
 <div class="content">
         <!--novalidate passing to form class saying html not to validate the form as Angular is going to validate  -->
         <h2 style="text-align: center"> Contact details for validation.</h2>
-        <form name="contactForm" novalidate>
+        <form name="contactForm" ng-submit="sendMessage()" novalidate>
                 
                 <input type="text" name="name" placeholder="Enter the name." ng-model="name" ng-required="true" />
                 <div ng-show="contactForm.name.$invalid && contactForm.name.$touched">
@@ -14,7 +14,7 @@
                 </div>
 
                 <textarea placeholder="Enter the message" name="message" ng-model="message" ng-required="true"></textarea>
-                
+                <!--ng-disabled to disable the button if some condition fails  -->
                 <input type="submit" value="Submit" ng-disabled="contactForm.$invalid" />
         </form>
 </div>
